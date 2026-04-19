@@ -1,36 +1,63 @@
-﻿using System;
-using System.Numerics;
-using static System.Reflection.Metadata.BlobBuilder;
+﻿
 
 namespace HMS_VERSION2
 {
+
     internal class Program
     {
+        //replace array by list
 
         // System Storage
 
-        static string[] patientNames = new string[100];
-        static string[] patientIDs = new string[100];
-        static string[] diagnoses = new string[100];
-        static bool[] admitted = new bool[100];
-        static string[] assignedDoctors = new string[100];
-        static string[] departments = new string[100];
-        static int[] visitCount = new int[100];
-        static double[] billingAmount = new double[100];
-        static DateTime[] lastVisitDate = new DateTime[100];
-        static DateTime[] lastDischargeDate = new DateTime[100];
-        static int[] daysInHospital = new int[100];
-        static string[] bloodType = new string[100];
+        //static string[] patientNames = new string[100];
+        static List<string> patientNames = new List<string>();
+
+        //static string[] patientIDs = new string[100];
+        static List<string> patientIDs = new List<string>();
+
+        //static string[] diagnosis = new string[100];
+        static List<string> diagnoses = new List<string>();
+
+        //static bool[] admitted = new bool[100];
+        static List<bool> admitted = new List<bool>();
+
+        //static string[] assignedDoctors = new string[100];
+        static List<string> assignedDoctors = new List<string>();
+
+        //static string[] department = new string[100];
+        static List<string> department = new List<string>();
+
+        //static int[] visitCount = new int[100];
+        static List<int> visitCount = new List<int>();
+
+        //static double[] billingAmount = new double[100];
+        static List<double> billingAmounts = new List<double>();
+
+        //static DateTime[] lastVisitDate = new DateTime[100];
+        static List<DateTime> lastVisitDate = new List<DateTime>();
+
+        //static DateTime[] lastDischargeDate = new DateTime[100];
+        static List<DateTime> lastDischargeDate = new List<DateTime>();
+
+        //static int[] daysInHospital = new int[100];
+        static List<int> daysInHospital = new List<int>();
+
+        //static string[] bloodType = new string[100];
+        static List<string> bloodType = new List<string>();
 
 
-        static string[] doctorNames= new string[50];
-        static int []doctorAvailableSlots=new int[50];
-        static int[] doctorVisitCount=new int[50];
+        // string[] doctorNames = new string[50];
+        static List<string> doctorNames = new List<string>();
 
+        // static int[] doctorAvailableSlots = new int[50];
+        static List<int> doctorAvailableSlots = new List<int>();
 
-        static int lastDoctorIndex = -1;   
+        //static int[] dctorVisitCount = new int[50];
+        static List<int> doctorVisitCount = new List<int>();
 
-        static int lastIndex = -1;
+        // static int lastDoctorIndex = -1;
+
+        // static int lastIndex = -1;
 
 
         /// ///////////////////////////////////////////////////////////////
@@ -40,77 +67,166 @@ namespace HMS_VERSION2
 
         // Seed Data
         static public void seedData()
-           
+
         {
 
-            lastIndex++;
-
-             lastDoctorIndex = -1;
-
-            patientNames[lastIndex] = "Ali Hassan";
-            patientIDs[lastIndex] = "P001";
-            diagnoses[lastIndex] = "Flu";
-            departments[lastIndex] = "General";
-            admitted[lastIndex] = false;
-            assignedDoctors[lastIndex] = "";
-            visitCount[lastIndex] = 2;
-            billingAmount[lastIndex] = 0;
-            lastVisitDate[lastIndex] = DateTime.Parse("2025-01-10");
-            lastDischargeDate[lastIndex] = DateTime.Parse("2025 - 01 - 15");
-            daysInHospital[lastIndex] = 12;
-            bloodType[lastIndex] = "A+";
-            lastDoctorIndex++;
-            doctorNames[lastDoctorIndex] = "Dr. Noor";
-            doctorAvailableSlots[lastDoctorIndex] = 5;
-            doctorVisitCount[lastDoctorIndex] = 0;
+            // lastIndex++;
 
 
-        
+            //patientNames[lastIndex] = "Ali Hassan";
+            patientNames.Add("Ali Hassan");
 
-           
-            lastIndex++;
-            patientNames[lastIndex] = "Sara Ahmed";
-            patientIDs[lastIndex] = "P002";
-            diagnoses[lastIndex] = "Fracture";
-            departments[lastIndex] = "Orthopedics";
-            admitted[lastIndex] = true;
-            assignedDoctors[lastIndex] = "Dr. Noor";
-            visitCount[lastIndex] = 4;
-            billingAmount[lastIndex] = 0;
-            lastVisitDate[lastIndex] = DateTime.Parse("2025-03-02");
-            lastDischargeDate[lastIndex] = DateTime.Parse("2025-01-15");
-            daysInHospital[lastIndex] = 8;
-            bloodType[lastIndex] = "O-";
+            //patientIDs[lastIndex] = "P001";
+            patientIDs.Add("P001");
 
-            lastDoctorIndex++;
-            doctorNames[lastDoctorIndex] = "Dr. Salem";
-            doctorAvailableSlots[lastDoctorIndex] = 3;
-            doctorVisitCount[lastDoctorIndex] = 0;
+            //diagnosis[lastIndex] = "Flu";
+            diagnoses.Add("Flu");
+
+            //department[lastIndex] = "General";
+            department.Add("General");
+
+            // admitted[lastIndex] = false;
+            admitted.Add(false);
+
+            // assignedDoctors[lastIndex] = "";
+            assignedDoctors.Add("");
+
+            // visitCount[lastIndex] = 2;
+            visitCount.Add(2);
+
+            // billingAmount[lastIndex] = 0;
+            billingAmounts.Add(0);
+            //lastVisitDate[lastIndex] = DateTime.Parse("2025-01-10");
+            lastVisitDate.Add(DateTime.Parse("2025-01-10"));
+
+            //DischargeDate[lastIndex] = new DateTime(2025, 1, 15);
+            lastDischargeDate.Add(DateTime.Parse("2025-01-15"));
+
+            // daysInHospital[lastIndex] = 12;
+            daysInHospital.Add(0);
+
+            //bloodType[lastIndex] = "A+";
+            bloodType.Add("A+");
 
 
 
+            //lastDoctorIndex++;
 
-            lastIndex++;
-            patientNames[lastIndex] = "Omar Khalid";
-            patientIDs[lastIndex] = "P003";
-            diagnoses[lastIndex] = "Diabetes";
-            departments[lastIndex] = "Cardiology";
-            admitted[lastIndex] = false;
-            assignedDoctors[lastIndex] = "";
-            visitCount[lastIndex] = 1;
-            billingAmount[lastIndex] = 0;
-            lastVisitDate[lastIndex] = DateTime.Today;
-            lastDischargeDate[lastIndex] = DateTime.Parse("2024-12-28");
-            daysInHospital[lastIndex] = 5;
-            bloodType[lastIndex] = "B+";
+            //doctorNames[lastDoctorIndex] = "Dr. Noor";
+            doctorNames.Add("Dr.Noor");
 
-            lastDoctorIndex++;
-            doctorNames[lastDoctorIndex] = "Dr. Hana";
-            doctorAvailableSlots[lastDoctorIndex] = 8;
-            doctorVisitCount[lastDoctorIndex] = 0;
 
-           
-           
+            //doctorAvailableSlots[lastDoctorIndex] = 5;
+            doctorAvailableSlots.Add(5);
+
+            // doctorVisitCount[lastDoctorIndex] = 0;
+            doctorVisitCount.Add(0);
+
+
+
+            //lastIndex++;
+
+            //patientNames[lastIndex] = "Sara Ahmed";
+            patientNames.Add("Sara Ahmed");
+
+            //patientIDs[lastIndex] = "P002";
+            patientIDs.Add("P002");
+
+            //diagnosis[lastIndex] = "Fracture";
+            diagnoses.Add("Fracture");
+
+            //department[lastIndex] = "Orthopedics";
+            department.Add("Orthopedics");
+
+            //admitted[lastIndex] = true;
+            admitted.Add(true);
+
+            //assignedDoctors[lastIndex] = "Dr. Noor";
+            assignedDoctors.Add("Dr. Noor");
+
+            // visitCount[lastIndex] = 4;
+            visitCount.Add(4);
+
+            //billingAmount[lastIndex] = 0;
+            billingAmounts.Add(0);
+
+            //lastVisitDate[lastIndex] = DateTime.Parse("2025-03-02");
+            lastVisitDate.Add(DateTime.Parse("2025-03-02"));
+
+            //lastDischargeDate[lastIndex] = DateTime.Parse("2025-01-15");
+            lastDischargeDate.Add(DateTime.Parse("2025-01-15"));
+
+            // daysInHospital[lastIndex] = 8;
+            daysInHospital.Add(8);
+
+
+            //bloodType[lastIndex] = "O-";
+            bloodType.Add("O-");
+
+
+            //lastDoctorIndex++;
+            // doctorNames[lastDoctorIndex] = "Dr. Salem";
+            doctorNames.Add("Dr.Salem");
+
+            //doctorAvailableSlots[lastDoctorIndex] = 3;
+            doctorAvailableSlots.Add(3);
+
+            //doctorVisitCount[lastDoctorIndex] = 0;
+            doctorVisitCount.Add(0);
+
+
+
+            //lastIndex++;
+
+            //patientNames[lastIndex] = "Omar Khalid";
+            patientNames.Add("Omar Khalid");
+
+            //patientIDs[lastIndex] = "P003";
+            patientIDs.Add("P003");
+
+            //diagnosis[lastIndex] = "Diabetes";
+            diagnoses.Add("Diabetes");
+
+            //department[lastIndex] = "Cardiology";
+            department.Add("Cardiology");
+
+            //admitted[lastIndex] = false;
+            admitted.Add(false);
+
+            //assignedDoctors[lastIndex] = "";
+            assignedDoctors.Add("");
+
+            //visitCount[lastIndex] = 1;
+            visitCount.Add(1);
+
+            //billingAmount[lastIndex] = 0;
+            billingAmounts.Add(0);
+
+            //lastVisitDate[lastIndex] = DateTime.Today;
+            lastVisitDate.Add(DateTime.Today);
+
+            //lastDischargeDate[lastIndex] = DateTime.Parse("2024-12-28");
+            lastDischargeDate.Add(DateTime.Parse("2024-12-28"));
+
+            //daysInHospital[lastIndex] = 5;
+            daysInHospital.Add(5);
+
+            //bloodType[lastIndex] = "B+";
+            bloodType.Add("B+");
+
+
+            // lastDoctorIndex++;
+
+            // doctorNames[lastDoctorIndex] = "Dr. Hana";
+            doctorNames.Add("Dr. Hana");
+
+            // doctorAvailableSlots[lastDoctorIndex] = 8;
+            doctorAvailableSlots.Add(8);
+
+            //  doctorVisitCount[lastDoctorIndex] = 0;
+            doctorVisitCount.Add(0);
+
+
 
         }
         ////////////////////////////////////////////////////////////////////
@@ -140,57 +256,46 @@ namespace HMS_VERSION2
         static public string RegisterPatient(string name, string Diagnosise,
                                            string Departments, string bloodTypes)
         {
-            lastIndex++;
+            // lastIndex++;
             Console.WriteLine("Register the new patient");
 
 
 
-            patientNames[lastIndex] = name;
-            diagnoses[lastIndex] = Diagnosise;
-            departments[lastIndex] = Departments;
-            bloodType[lastIndex] = bloodTypes;
+            patientNames.Add(name);
+            diagnoses.Add(Diagnosise);
+            department.Add(Departments);
+            bloodType.Add(bloodTypes);
 
-            string patientId = string.Format("P{0:D3}", lastIndex);
-            patientIDs[lastIndex] = patientId;
-            admitted[lastIndex] = false;
-            assignedDoctors[lastIndex] = "";
-            visitCount[lastIndex] = 0;
-            billingAmount[lastIndex] = 0;
+            string patientId = $"P{patientIDs.Count + 1:D3}";
+            patientIDs.Add(patientId);
+            admitted.Add(false);
+            assignedDoctors.Add("");
+            visitCount.Add(0);
+            billingAmounts.Add(0);
 
-            lastVisitDate[lastIndex] = DateTime.Now;
-            lastDischargeDate[lastIndex] = DateTime.Now;
-            daysInHospital[lastIndex] = 0;
+            lastVisitDate.Add(DateTime.Now);
+            lastDischargeDate.Add(DateTime.Now);
+            daysInHospital.Add(0);
 
 
             Console.WriteLine("Patient registered successfully :");
 
             return patientId;
 
-
-
-
-
-
-
         }
+
+
         static public int SearchPatient(string searchInput)
         {
-
-
-            int pateintFound = -1;
-
-            for (int i = 0; i <= lastIndex; i++)
+            for (int i = 0; i < patientNames.Count; i++)
             {
-                if (patientNames[i] == searchInput || patientIDs[i] == searchInput)
+                if (patientNames[i].Equals(searchInput, StringComparison.OrdinalIgnoreCase) ||
+                    patientIDs[i].Equals(searchInput, StringComparison.OrdinalIgnoreCase))
                 {
-                    pateintFound = i;
-                    break;
+                    return i;
                 }
             }
-            return pateintFound;
-
-
-
+            return -1;
         }
 
 
@@ -198,18 +303,18 @@ namespace HMS_VERSION2
         {
             Console.WriteLine("Name: " + patientNames[index]);
             Console.WriteLine("ID: " + patientIDs[index]);
-            Console.WriteLine("Diagnosis: " + diagnoses[index]);
-            Console.WriteLine("Department: " + departments[index]);
+            Console.WriteLine("Diagnosis: " + diagnoses[index] + " (" + diagnoses[index].Length + " characters)");
+            Console.WriteLine("Department: " + department[index]);
+            Console.WriteLine("Admitted:       " + admitted[index]);
+            Console.WriteLine("Total Visits:   " + visitCount[index]);
+            Console.WriteLine("Doctor:         " + assignedDoctors[index]);
+
         }
 
-        static void AdmitPatient()
+        static public void AdmitPatient()
         {
             Console.Write("Enter Patient ID or Name: ");
             string input = (Console.ReadLine() ?? "").Trim();
-
-            Console.Write("Enter admitt date (YYYY-MM-DD): ");
-            string admittionDateInput = Console.ReadLine();
-
 
             int patientIndex = SearchPatient(input);
 
@@ -225,13 +330,26 @@ namespace HMS_VERSION2
                 return;
             }
 
-            // Step 1: Doctor validation
+            Console.Write("Enter admitt date (YYYY-MM-DD): ");
+            string admissionDateInput = Console.ReadLine();
+
+            if (DateTime.TryParse(admissionDateInput, out DateTime admitDate))
+            {
+                lastVisitDate[patientIndex] = admitDate;
+            }
+            else
+            {
+                Console.WriteLine("Invalid date format. Using current date.");
+                lastVisitDate[patientIndex] = DateTime.Now;
+            }
+
+            // Doctor validation
             Console.Write("Doctor Name: ");
             string doctorInput = (Console.ReadLine() ?? "").Trim();
 
             int doctorIndex = -1;
 
-            for (int i = 0; i <= lastDoctorIndex; i++)
+            for (int i = 0; i < doctorNames.Count; i++)
             {
                 if (doctorNames[i].ToLower() == doctorInput.ToLower())
                 {
@@ -246,14 +364,14 @@ namespace HMS_VERSION2
                 return;
             }
 
-            //  Step 2: Check slots
+            // Check slots
             if (doctorAvailableSlots[doctorIndex] <= 0)
             {
                 Console.WriteLine("Dr. " + doctorNames[doctorIndex] + " has no available slots at this time.");
                 return;
             }
 
-            // Step 3: Admit patient
+            // Admit patient
             admitted[patientIndex] = true;
             visitCount[patientIndex]++;
             assignedDoctors[patientIndex] = doctorNames[doctorIndex];
@@ -261,13 +379,10 @@ namespace HMS_VERSION2
             doctorAvailableSlots[doctorIndex]--;
             doctorVisitCount[doctorIndex]++;
 
-            lastVisitDate[patientIndex] = DateTime.Now;
-
             Console.WriteLine("Patient admitted successfully");
-            Console.WriteLine("Dr. " + doctorNames[doctorIndex] + " now has " + doctorAvailableSlots[doctorIndex] + " slot(s) remaining.");
-
+            Console.WriteLine("Dr. " + doctorNames[doctorIndex] +
+                " now has " + doctorAvailableSlots[doctorIndex] + " slot(s) remaining.");
         }
-
 
         static void DischargePatient()
         {
@@ -276,7 +391,7 @@ namespace HMS_VERSION2
 
             Console.Write("Enter discharge date (YYYY-MM-DD): ");
             string dischargeDateInput = Console.ReadLine();
-            
+
 
             int patientIndex = SearchPatient(input);
 
@@ -293,7 +408,8 @@ namespace HMS_VERSION2
             }
             if (DateTime.TryParse(dischargeDateInput, out DateTime dischargeDate))
             {
-                lastDischargeDate[patientIndex] = dischargeDate;
+                daysInHospital[patientIndex] =
+                     (dischargeDate - lastVisitDate[patientIndex]).Days;
             }
             else
             {
@@ -306,9 +422,10 @@ namespace HMS_VERSION2
             int doctorIndex = -1;
 
             // Find doctor in registry
-            for (int i = 0; i <= lastDoctorIndex; i++)
+            for (int i = 0; i < doctorNames.Count; i++)
             {
-                if (doctorNames[i].ToLower() == assignedDoctor.ToLower())
+                if (!string.IsNullOrEmpty(assignedDoctor) &&
+                      doctorNames[i].Equals(assignedDoctor, StringComparison.OrdinalIgnoreCase))
                 {
                     doctorIndex = i;
                     break;
@@ -323,8 +440,8 @@ namespace HMS_VERSION2
                 Console.WriteLine("Dr. " + doctorNames[doctorIndex] + " now has " + doctorAvailableSlots[doctorIndex] + " slot(s) available.");
 
 
-                   
-              
+
+
             }
             else
             {
@@ -348,7 +465,7 @@ namespace HMS_VERSION2
                 visitCharges += meds;
             }
 
-            billingAmount[patientIndex] += visitCharges;
+            billingAmounts[patientIndex] += visitCharges;
 
             admitted[patientIndex] = false;
             assignedDoctors[patientIndex] = "";
@@ -360,7 +477,7 @@ namespace HMS_VERSION2
 
         static void BillingReport()
         {
-            Console.WriteLine("1. System-wide total");
+            Console.WriteLine("1. System-wide total, min, max");
             Console.WriteLine("2. Individual patient");
             Console.Write("Choose: ");
 
@@ -372,21 +489,60 @@ namespace HMS_VERSION2
                 return;
             }
 
+            // Part 1 1: System-Wide-Report
+
             if (option == 1)
             {
                 double total = 0;
 
-                for (int i = 0; i <= lastIndex; i++)
+                double min = billingAmounts[0];
+                double max = 0;
+
+                bool firstValidMin = true;
+
+                for (int i = 0; i < patientNames.Count; i++)
                 {
-                    total += billingAmount[i];
+                    double bill = billingAmounts[i];
+
+                    // Total
+                    total += bill;
+
+                    // Max
+                    if (bill > max)
+                    {
+                        max = bill;
+                    }
+
+                    // Min (skip zero values)
+                    if (bill != 0)
+                    {
+                        if (firstValidMin)
+                        {
+                            min = bill;
+                            firstValidMin = false;
+                        }
+                        else if (bill < min)
+                        {
+                            min = bill;
+                        }
+                    }
                 }
 
+                Console.WriteLine("===== System-wide Report =====");
                 Console.WriteLine("Total billing: " + total);
+                Console.WriteLine("Minimum billing: " + min);
+                Console.WriteLine("Maximum billing: " + max);
             }
+
+
+            // Par 2: individul Patient
+
             else if (option == 2)
             {
+                Console.WriteLine("===== Individual Patient Report =====");
+
                 Console.Write("Enter Patient ID or Name: ");
-                string input = Console.ReadLine();
+                string input = (Console.ReadLine() ?? "").Trim();
 
                 int index = SearchPatient(input);
 
@@ -396,11 +552,31 @@ namespace HMS_VERSION2
                 }
                 else
                 {
-                    Console.WriteLine("Billing: " + billingAmount[index]);
+
+                    // Zero billing guard
+
+                    if (billingAmounts.Count == 0)
+                    {
+                        Console.WriteLine("No billing data");
+                        return;
+                    }
+
+                    Console.WriteLine("Billing: " + billingAmounts[index]);
+
+
+                    // Random discount
+
+                    Random rng = new Random();
+                    int discountPct = rng.Next(5, 21);
+
+                    double discounted = billingAmounts[index] * (1 - discountPct / 100.0);
+                    discounted = Math.Round(discounted, 2);
+
+                    Console.WriteLine("Discount applied: " + discountPct + "%");
+                    Console.WriteLine("Amount after discount: " + discounted + " OMR");
                 }
             }
         }
-
         static void ListAdmittedPatients()
         {
             Console.WriteLine("Currently Admitted Patients:");
@@ -410,29 +586,27 @@ namespace HMS_VERSION2
             int count = 0;
             double highestBilling = 0;
 
-            for (int i = 0; i <= lastIndex; i++)
+            for (int i = 0; i < patientNames.Count; i++)
             {
                 if (admitted[i])
                 {
-                    Console.WriteLine(
-                        "Name: " + patientNames[i] +
+                    Console.WriteLine("Name: " + patientNames[i] +
                         " | ID: " + patientIDs[i] +
+
                         " | Diagnosis: " + diagnoses[i] +
-                        " | Department: " + departments[i] +
+                        " | Department: " + department[i] +
                         " | Doctor: " + assignedDoctors[i] +
-                        " | Last Visit: " + lastVisitDate[i]
-                    );
+                        " | Last Visit: " + lastVisitDate[i]);
+
 
                     found = true;
                     count++;
-                    highestBilling = Math.Max(highestBilling, billingAmount[i]);
+                    highestBilling = Math.Max(highestBilling, billingAmounts[i]);
                 }
             }
 
             if (!found)
-            {
                 Console.WriteLine("No patients currently admitted");
-            }
             else
             {
                 Console.WriteLine("----------------------------------------");
@@ -444,27 +618,58 @@ namespace HMS_VERSION2
         static void TransferPatientDoctor()
         {
             Console.Write("Enter current doctor name: ");
-            string currentDoctor = Console.ReadLine();
+            string currentDoctor = (Console.ReadLine() ?? "").Trim();
 
             Console.Write("Enter new doctor name: ");
-            string newDoctor = Console.ReadLine();
+            string newDoctor = (Console.ReadLine() ?? "").Trim();
 
-            if (currentDoctor == newDoctor)
+            if (currentDoctor.Equals(newDoctor, StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("New doctor must be different from current doctor");
                 return;
             }
 
+            // search for new doctor
+            int newDoctorIndex = -1;
+
+            for (int i = 0; i < doctorNames.Count; i++)
+            {
+                if (doctorNames[i].Equals(newDoctor, StringComparison.OrdinalIgnoreCase))
+                {
+                    newDoctorIndex = i;
+                    break;
+                }
+            }
+
+            if (newDoctorIndex == -1)
+            {
+                Console.WriteLine("New doctor not found in system");
+                return;
+            }
+
             bool found = false;
 
-            for (int i = 0; i <= lastIndex; i++)
+            for (int i = 0; i < patientNames.Count; i++)
             {
-                if (admitted[i] && assignedDoctors[i] == currentDoctor)
+                if (admitted[i] &&
+                    assignedDoctors[i].Equals(currentDoctor, StringComparison.OrdinalIgnoreCase))
                 {
-                    assignedDoctors[i] = newDoctor;
+                    found = true;
+
+                    // update slots
+                    if (doctorAvailableSlots[newDoctorIndex] <= 0)
+                    {
+                        Console.WriteLine("No available slots for new doctor");
+                        return;
+                    }
+
+                    assignedDoctors[i] = doctorNames[newDoctorIndex];
+
+                    doctorAvailableSlots[newDoctorIndex]--;
+                    doctorVisitCount[newDoctorIndex]++;
 
                     Console.WriteLine("Patient: " + patientNames[i]);
-                    Console.WriteLine("Transferred to: " + newDoctor);
+                    Console.WriteLine("Transferred to: " + doctorNames[newDoctorIndex]);
 
                     found = true;
                     break;
@@ -476,7 +681,6 @@ namespace HMS_VERSION2
                 Console.WriteLine("No admitted patients found under this doctor");
             }
         }
-
         static void ViewMostVisitedPatients()
         {
             Console.WriteLine("Most Visited Patients:");
@@ -486,17 +690,17 @@ namespace HMS_VERSION2
 
             int[] tempVisits = new int[100];
 
-            for (int i = 0; i <= lastIndex; i++)
+            for (int i = 0; i < patientNames.Count; i++)
             {
                 tempVisits[i] = visitCount[i];
             }
 
-            for (int pass = 0; pass <= lastIndex; pass++)
+            for (int pass = 0; pass < patientNames.Count; pass++)
             {
                 int maxIndex = -1;
                 int maxValue = -1;
 
-                for (int i = 0; i <= lastIndex; i++)
+                for (int i = 0; i < patientNames.Count; i++)
                 {
                     if (tempVisits[i] > maxValue)
                     {
@@ -526,28 +730,31 @@ namespace HMS_VERSION2
         static void SearchByDepartment()
         {
             Console.Write("Enter department name: ");
-            string searchDept = Console.ReadLine() ?? "";
+            string searchDept = Console.ReadLine() ?? "".Trim();
 
             bool found = false;
 
             Console.WriteLine("Patients in department:");
             Console.WriteLine("----------------------------------------");
 
-            for (int i = 0; i <= lastIndex; i++)
+            for (int i = 0; i < patientNames.Count; i++)
             {
-                if (departments[i].ToLower() == searchDept.ToLower())
+                if (department[i].IndexOf(searchDept, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     found = true;
 
                     string status = admitted[i] ? "Admitted" : "Not Admitted";
 
-                    Console.WriteLine(
-                        "ID: " + patientIDs[i] +
-                        " | Name: " + patientNames[i] +
-                        " | Diagnosis: " + diagnoses[i] +
-                        " | Status: " + status +
-                        " | Blood Type: " + bloodType[i]
-                    );
+                    string diagDisplay = diagnoses[i].Length > 15
+                        ? diagnoses[i].Substring(0, 15) + "..."
+                        : diagnoses[i];
+
+                    Console.WriteLine("ID: " + patientIDs[i] + " | Name: " + patientNames[i] + " | Diagnoses: " + diagnoses[i] +
+                                       " | Status: " + status + " | Blood Type: " + bloodType[i]);
+
+
+
+
                 }
             }
 
@@ -560,7 +767,7 @@ namespace HMS_VERSION2
         static void AddDoctor()
         {
             Console.Write("Enter doctor full name: ");
-            string name = (Console.ReadLine() ?? "").Trim().ToUpper();
+            string name = (Console.ReadLine() ?? "").Trim();
 
             if (name == "")
             {
@@ -569,7 +776,7 @@ namespace HMS_VERSION2
             }
 
             Console.Write("Enter available slots: ");
-            string slotInput = Console.ReadLine() ?? "";
+            string slotInput = (Console.ReadLine() ?? "").Trim();
 
             int slots;
 
@@ -579,8 +786,8 @@ namespace HMS_VERSION2
                 return;
             }
 
-           
-            for (int i = 0; i <= lastDoctorIndex; i++)
+
+            for (int i = 0; i < doctorNames.Count; i++)
             {
                 if (doctorNames[i].ToLower() == name.ToLower())
                 {
@@ -589,19 +796,17 @@ namespace HMS_VERSION2
                 }
             }
 
-            
-            lastDoctorIndex++;
 
-            doctorNames[lastDoctorIndex] = name;
-            doctorAvailableSlots[lastDoctorIndex] = slots;
-            doctorVisitCount[lastDoctorIndex] = 0;
-
+            // lastDoctorIndex++;
+            doctorNames.Add(name);
+            doctorAvailableSlots.Add(slots);
+            doctorVisitCount.Add(0);
             Console.WriteLine("Doctor " + name + " registered successfully with " + slots + " available slots.");
         }
 
         static void DoctorSalaryReport()
         {
-            if (lastDoctorIndex == -1)
+            if (doctorNames.Count == 0)
             {
                 Console.WriteLine("No doctors registered in the system.");
                 return;
@@ -613,7 +818,7 @@ namespace HMS_VERSION2
             double highestSalary = 0;
             int highestIndex = -1;
 
-            for (int i = 0; i <= lastDoctorIndex; i++)
+            for (int i = 0; i < doctorNames.Count; i++)
             {
                 double salary = 300 + (doctorVisitCount[i] * 15);
                 salary = Math.Round(salary, 2);
@@ -624,28 +829,28 @@ namespace HMS_VERSION2
                     highestIndex = i;
                 }
 
-                string salaryText = Convert.ToString(salary);
+                Console.WriteLine($"Salary: {salary:F2} OMR");
 
                 Console.WriteLine(doctorNames[i] + "  Visits: " + doctorVisitCount[i] +
-                    "  Available Slots: " + doctorAvailableSlots[i] + "  Salary: " + salaryText + " OMR");
+                    "  Available Slots: " + doctorAvailableSlots[i] + "  Salary: " + salary + " OMR");
 
 
-               
+
             }
 
             Console.WriteLine("----------------------------------------");
 
-            Console.WriteLine("Highest earning doctor: " + doctorNames[highestIndex] + " — " + Convert.ToString(highestSalary) +"OMR");
+            Console.WriteLine("Highest earning doctor: " + doctorNames[highestIndex] + " — " + Convert.ToString(highestSalary) + "OMR");
 
 
 
 
-            
+
         }
         static bool ExitSystem()
         {
             Console.WriteLine("Are you sure you want to exit? (true/false)");
-            string confirm = Console.ReadLine() ?? "";
+            string confirm = Console.ReadLine() ?? "".Trim();
 
             if (confirm.ToLower() == "true")
             {
@@ -667,7 +872,8 @@ namespace HMS_VERSION2
 
             bool exit = false;
 
-            while (exit == false) {
+            while (exit == false)
+            {
 
                 displayMenu();
 
@@ -677,13 +883,12 @@ namespace HMS_VERSION2
 
                 try
                 {
-
-                    choice = int.Parse(Console.ReadLine());
+                    choice = int.Parse((Console.ReadLine() ?? "").Trim());
                 }
-                catch (Exception ex)
+                catch (FormatException)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine("Invalid input. Please choose a number from 1 to 10.");
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    continue;
                 }
 
                 switch (choice)
@@ -693,21 +898,21 @@ namespace HMS_VERSION2
 
 
                         Console.Write("Patient name: ");
-                        string patientName = Console.ReadLine().Trim();
+                        string name = (Console.ReadLine() ?? "").Trim();
 
                         Console.Write("Diagnosis: ");
-                        string Diagnosise = Console.ReadLine().Trim();
+                        string Diagnosise = (Console.ReadLine() ?? "").Trim();
 
                         Console.Write("Department: ");
-                        string Department = Console.ReadLine();
+                        string Department = (Console.ReadLine() ?? "").Trim();
 
                         Console.Write("blood Type: ");
-                        string bloodTypes = Console.ReadLine().ToUpper();
+                        string bloodTypes = (Console.ReadLine() ?? "").Trim().ToUpper();
 
 
 
-                        string Pid = RegisterPatient(patientName, Diagnosise,
-                                                Department, bloodTypes);
+                        string Pid = RegisterPatient(name, Diagnosise,
+                                                    Department, bloodTypes);
 
                         Console.WriteLine("Generated the patient ID:" + Pid);
 
@@ -718,9 +923,9 @@ namespace HMS_VERSION2
                     case 2: // Admit Patient
 
                         AdmitPatient();
-                       
 
-                       
+
+
                         break;
 
                     case 3: // Discharge Patient
@@ -733,13 +938,14 @@ namespace HMS_VERSION2
                     case 4: // Search Patient
 
                         Console.Write("Enter Patient ID or Name: ");
-                        string searchInput = Console.ReadLine().ToUpper();
+                        string searchInput = (Console.ReadLine() ?? "").Trim();
 
                         int searchFound = SearchPatient(searchInput);
 
                         if (searchFound == -1)
                         {
                             Console.WriteLine("Patient not found");
+
                         }
                         else
                         {
@@ -768,7 +974,7 @@ namespace HMS_VERSION2
 
                     case 7: // View Most Visited Patients
                         ViewMostVisitedPatients();
-                
+
 
                         break;
 
@@ -777,13 +983,13 @@ namespace HMS_VERSION2
 
                         SearchByDepartment();
                         break;
-                        
+
                     case 9: // Billing Report
 
                         BillingReport();
                         break;
 
-                        case 10://Add Doctor
+                    case 10://Add Doctor
 
                         AddDoctor();
 
@@ -791,7 +997,7 @@ namespace HMS_VERSION2
                         break;
 
 
-                    
+
                     case 11:// Doctor Salary Report
 
 
@@ -802,31 +1008,39 @@ namespace HMS_VERSION2
 
 
                     case 12: // Exit
-                         ExitSystem();
+                        exit = ExitSystem();
+                        break; ;
+
+
+
+
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
                         break;
-
-
-
-
-                                    default:
-                                        Console.WriteLine("Invalid option. Please try again.");
-                                        break;
-                                    }
-
-                                    Console.WriteLine("Press any key to continue...");
-                                    Console.ReadKey();
-                                    Console.Clear();
-
-                                }
-                            }
-                        }
                 }
-            
-        
-    
 
-            
-        
-    
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                Console.Clear();
+
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
